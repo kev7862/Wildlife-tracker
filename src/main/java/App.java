@@ -80,5 +80,27 @@ post("/animal/new", (request, response) -> {
   model.put("template", "templates/success.vtl");
   return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
+
+get("/animal/:id", (request, response) -> {
+  Map<String, Object> model = new HashMap<String, Object>();
+  Animal animal = Animal.find(Integer.parseInt(request.params("id")));
+  model.put("animal", animal);
+  model.put("template", "templates/animal.vtl");
+  return new ModelAndView(model, layout);
+}, new VelocityTemplateEngine());
+
+get("/endangered_animal/:id", (request, response) -> {
+  Map<String, Object> model = new HashMap<String, Object>();
+  EndangeredAnimal endangeredAnimal = EndangeredAnimal.find(Integer.parseInt(request.params("id")));
+  model.put("endangeredAnimal", endangeredAnimal);
+  model.put("template", "templates/endangered_animal.vtl");
+  return new ModelAndView(model, layout);
+}, new VelocityTemplateEngine());
+
+get("/error", (request, response) -> {
+  Map<String, Object> model = new HashMap<String, Object>();
+  model.put("template", "templates/error.vtl");
+  return new ModelAndView(model, layout);
+}, new VelocityTemplateEngine());
 }
 }
