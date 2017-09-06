@@ -20,7 +20,7 @@ public class AnimalTest {
     Animal testAnimal = new Animal("Deer");
     assertEquals("Deer", testAnimal.getName());
   }
-
+// Testing Instances of a string object and return false if are the same
   @Test
   public void equals_returnsTrueIfNameIsTheSame_false() {
     Animal firstAnimal = new Animal("Deer");
