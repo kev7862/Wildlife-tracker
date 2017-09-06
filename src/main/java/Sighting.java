@@ -41,7 +41,7 @@ public class Sighting {
       return this.getAnimalId() == (newSighting.getAnimalId()) && this.getLocation().equals(newSighting.getLocation()) && this.getRangerName().equals(newSighting.getRangerName());
     }
   }
-
+// Attempting connection to DB sightings table save the: animal id, location and ranger_name by their appropriate id
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO sightings (animal_id, location, ranger_name) VALUES (:animal_id, :location, :ranger_name);";
@@ -52,5 +52,14 @@ public class Sighting {
         .throwOnMappingFailure(false)
         .executeUpdate()
         .getKey();
+    }
+  }
+//Creating a Sighting List then attemting connection to the DB and return everything with with an id
+  public static List<Sighting> all() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM sightings;";
+      return con.createQuery(sql)
+        .throwOnMappingFailure(false)
+        .executeAndFetch(Sighting.class);
     }
   }
