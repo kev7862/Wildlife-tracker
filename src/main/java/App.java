@@ -19,6 +19,7 @@ public class App {
      }
 
     setPort(port);
+    
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
