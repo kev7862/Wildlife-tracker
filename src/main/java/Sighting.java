@@ -63,3 +63,18 @@ public class Sighting {
         .executeAndFetch(Sighting.class);
     }
   }
+
+  // Trying connection to DB sightings table, find and Return everything with an id. And also try to catch any error that might occur. 
+  public static Sighting find(int id) {
+  try(Connection con = DB.sql2o.open()) {
+    String sql = "SELECT * FROM sightings WHERE id=:id;";
+    Sighting sighting = con.createQuery(sql)
+      .addParameter("id", id)
+      .executeAndFetchFirst(Sighting.class);
+    return sighting;
+  } catch (IndexOutOfBoundsException exception) {
+    return null;
+  }
+}
+
+}
