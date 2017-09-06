@@ -20,6 +20,8 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    
+
 
     post("/sighting", (request, response) -> {
   Map<String, Object> model = new HashMap<String, Object>();
