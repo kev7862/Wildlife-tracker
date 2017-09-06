@@ -14,3 +14,16 @@ public class AnimalTest {
     Animal testAnimal = new Animal("Deer");
     assertEquals(true, testAnimal instanceof Animal);
   }
+
+  @Test
+  public void getName_animalInstantiatesWithName_Deer() {
+    Animal testAnimal = new Animal("Deer");
+    assertEquals("Deer", testAnimal.getName());
+  }
+
+  @Test
+  public void equals_returnsTrueIfNameIsTheSame_false() {
+    Animal firstAnimal = new Animal("Deer");
+    Animal anotherAnimal = new Animal("Deer");
+    assertTrue(firstAnimal.equals(anotherAnimal));
+  }
