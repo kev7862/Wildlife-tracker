@@ -31,7 +31,7 @@ public class Sighting {
   public String getRangerName() {
     return ranger_name;
   }
-
+//Created an override function that checks two instances of the Sighting class and fetch the Aniimal id,  location, and RangerName
   @Override
   public boolean equals(Object otherSighting) {
     if(!(otherSighting instanceof Sighting)) {
@@ -39,5 +39,18 @@ public class Sighting {
     } else {
       Sighting newSighting = (Sighting) otherSighting;
       return this.getAnimalId() == (newSighting.getAnimalId()) && this.getLocation().equals(newSighting.getLocation()) && this.getRangerName().equals(newSighting.getRangerName());
+    }
+  }
+
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO sightings (animal_id, location, ranger_name) VALUES (:animal_id, :location, :ranger_name);";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("animal_id", this.animal_id)
+        .addParameter("location", this.location)
+        .addParameter("ranger_name", this.ranger_name)
+        .throwOnMappingFailure(false)
+        .executeUpdate()
+        .getKey();
     }
   }
