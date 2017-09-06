@@ -38,3 +38,11 @@ public void save() {
         .getKey();
     }
   }
+
+  public static List<Animal> all() {
+  try(Connection con = DB.sql2o.open()) {
+    String sql = "SELECT * FROM animals;";
+    return con.createQuery(sql)
+      .executeAndFetch(Animal.class);
+  }
+}
