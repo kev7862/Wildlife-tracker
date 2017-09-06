@@ -18,3 +18,13 @@ public class Animal {
   public int getId() {
     return id;
   }
+
+  @Override
+public boolean equals(Object otherAnimal) {
+  if(!(otherAnimal instanceof Animal)) {
+    return false;
+  } else {
+    Animal newAnimal = (Animal) otherAnimal;
+    return this.getName().equals(newAnimal.getName());
+  }
+}
