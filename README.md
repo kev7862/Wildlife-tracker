@@ -12,5 +12,20 @@ The Forest Service is considering a proposal from a timber company to clearcut a
 * CREATE TABLE sightings (id serial PRIMARY KEY, animal_id int, location varchar, ranger_name varchar);
 * CREATE DATABASE wildlife_tracker_test WITH TEMPLATE wildlife_tracker;
 
+# Technologies Used.
+* Java
+
+* Gradle
+
+* JUnit
+
+* Spark
+
+* Postgres
+
+* SQL
+
+* VelocityTemplateEngine
+
 # Licence.
 copyright 2017 [MIT]https://choosealicense.com/licenses/mit
