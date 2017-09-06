@@ -53,3 +53,11 @@ public void save() {
         .getKey();
     }
   }
+
+  public static List<EndangeredAnimal> all() {
+  try(Connection con = DB.sql2o.open()) {
+    String sql = "SELECT * FROM endangered_animals;";
+    return con.createQuery(sql)
+      .executeAndFetch(EndangeredAnimal.class);
+  }
+}
