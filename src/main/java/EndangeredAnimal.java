@@ -80,6 +80,7 @@ public void updateHealth(String health) {
         .addParameter("id", id)
         .executeUpdate();
     }
+  }
 
     public List<Sighting> getSightings() {
   try(Connection con = DB.sql2o.open()) {
