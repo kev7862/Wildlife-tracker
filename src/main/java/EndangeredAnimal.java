@@ -71,3 +71,13 @@ public void updateHealth(String health) {
         .executeUpdate();
     }
   }
+// Attempting a connection to DB endangered_animals table and updating each animals age by its id.
+  public void updateAge(String age) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE endangered_animals SET age=:age WHERE id=:id;";
+      con.createQuery(sql)
+        .addParameter("age", age)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
