@@ -53,7 +53,7 @@ public void save() {
         .getKey();
     }
   }
-
+//Creating a connection to the DB endagered _animals table and return everything in a List called EndangeredAnimals"
   public static List<EndangeredAnimal> all() {
   try(Connection con = DB.sql2o.open()) {
     String sql = "SELECT * FROM endangered_animals;";
@@ -61,3 +61,13 @@ public void save() {
       .executeAndFetch(EndangeredAnimal.class);
   }
 }
+// trying a connection to the DB endagered_animals table and updating each animal's health by its id
+public void updateHealth(String health) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE endangered_animals SET health=:health WHERE id=:id;";
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .addParameter("health", health)
+        .executeUpdate();
+    }
+  }
